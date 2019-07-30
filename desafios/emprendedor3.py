@@ -16,7 +16,7 @@ expenses = float(sys.argv[3])
 profit_prev_year = 1000
 if len(sys.argv) == 5:
     profit_prev_year = float(sys.argv[4])
-TAXES = 0.35*1
+TAXES = 0.35
 
 income = price_per_user * total_users
 profit_curr_year = income - expenses
