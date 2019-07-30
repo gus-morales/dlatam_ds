@@ -2,29 +2,29 @@
 Prints the expected profit.
 
 Keyword arguments:
-price_per_user
-total_users
-expenses
-profit_prev_year
+PRICE_PER_USER
+TOTAL_USERS
+EXPENSES
+PROFIT_PREV_YEAR
 """
 from os import sys
 
-price_per_user = float(sys.argv[1])
-total_users = float(sys.argv[2])
-expenses = float(sys.argv[3])
+PRICE_PER_USER = float(sys.argv[1])
+TOTAL_USERS = float(sys.argv[2])
+EXPENSES = float(sys.argv[3])
 
-profit_prev_year = 1000
+PROFIT_PREV_YEAR = 1000
 if len(sys.argv) == 5:
-    profit_prev_year = float(sys.argv[4])
+    PROFIT_PREV_YEAR = float(sys.argv[4])
 TAXES = 0.35
 
-income = price_per_user * total_users
-profit_curr_year = income - expenses
+INCOME = PRICE_PER_USER * TOTAL_USERS
+PROFIT_CURR_YEAR = INCOME - EXPENSES
 
-if profit_curr_year > 0:
-    profit_curr_year *= (1 - TAXES)
+if PROFIT_CURR_YEAR > 0:
+    PROFIT_CURR_YEAR *= (1 - TAXES)
 
-rate_percent = profit_curr_year * 100 / profit_prev_year
+RATE_PERCENT = PROFIT_CURR_YEAR * 100 / PROFIT_PREV_YEAR
 
 print("")
-print("Utilidades actuales vs. año anterior = {}%".format(rate_percent))
+print("Utilidades actuales vs. año anterior = {}%".format(RATE_PERCENT))
