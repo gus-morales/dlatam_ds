@@ -19,13 +19,12 @@ if len(sys.argv) == 5:
 TAXES = 0.35
 
 income = price_per_user * total_users
-profit_cur_year = income - expenses
+profit_curr_year = income - expenses
 
-if profit_cur_year > 0:
-    profit_cur_year *= (1 - TAXES)
+if profit_curr_year > 0:
+    profit_curr_year *= (1 - TAXES)
 
-rate_percent = profit_cur_year * 100 / profit_prev_year
-rate_percent = profit_prev_year * 100 / profit_cur_year
+rate_percent = profit_curr_year * 100 / profit_prev_year
 
 print("")
 print("Utilidades actuales vs. año anterior = {}%".format(rate_percent))
