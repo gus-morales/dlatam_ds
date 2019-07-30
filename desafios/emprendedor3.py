@@ -9,11 +9,11 @@ profit_prev_year
 """
 from os import sys
 
-price_per_user = 50 #float(sys.argv[1])
-total_users = 1000 #float(sys.argv[2])
-expenses = 20000 #float(sys.argv[3])
+price_per_user = float(sys.argv[1])
+total_users = float(sys.argv[2])
+expenses = float(sys.argv[3])
 
-#profit_prev_year = 1000
+profit_prev_year = 1000
 if len(sys.argv) == 5:
     profit_prev_year = float(sys.argv[4])
 TAXES = 0.35
@@ -23,7 +23,7 @@ profit_curr_year = income - expenses
 
 if profit_curr_year > 0:
     profit_curr_year *= (1 - TAXES)
-profit_prev_year = profit_curr_year*2
+
 rate_percent = profit_curr_year * 100 / profit_prev_year
 
 print("")
