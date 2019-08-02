@@ -1,22 +1,17 @@
 def letra_o(n):
 
-    ct = 1
-    while ct <= n:
-        
-        if ct == 1 or ct == n:
-            for i in range(n):
-                print("*", end="")
-            print()
-        else:
-            for i in range(n):
-                if i == 0 or i == n-1:
-                    print("*", end="")
-                else:
-                    print(" ", end="")
-            print()
+    result_str = ""
 
-        ct += 1
+    for row in range(0, n):
+        for col in range(0, n):
+            cond1 = (row == 0 or row == n-1)
+            cond2 = col == 0 or col == n-1
+            if cond1 or cond2:
+                result_str += "*"
+            else:
+                result_str += " "
+        result_str += "\n"
 
-    return None
+    return result_str
 
-letra_o(5)
+print(letra_o(5))
