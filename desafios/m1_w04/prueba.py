@@ -16,10 +16,3 @@ def request(method, url, payload=""):
         return json.loads(response.text)
 
 URL = "https://reqres.in/api/users"
-
-d2_res = request(method="GET", url=URL)["data"]
-d3_res = request(method="POST", url=URL)
-d4_res = request(method="PUT", url=URL)
-d5_res = request(method="DELETE", url=URL)
-
-pp(d2_res)
