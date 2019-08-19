@@ -30,7 +30,7 @@ def request(url, api_key):
     """
     :param url:
     :param api_key:
-    :return: response.text
+    :returns: response.text
     """
     headers = {
         'Cache-Control': "no-cache",
@@ -45,7 +45,7 @@ def request(url, api_key):
 
 def build_web_page(response_dictionary):
     """
-    :param response_dictionary:
+    :param: response_dictionary
     """
     html_ini = """<html>
 <head>
@@ -66,7 +66,7 @@ def build_web_page(response_dictionary):
 def count_photos(response_dictionary):
     """
     :param response_dictionary:
-    :return: out_dict
+    :returns: out_dict
     """
     cameras = []
     for i in response_dictionary["photos"]:
@@ -78,4 +78,5 @@ def count_photos(response_dictionary):
 response_dict = request(API_URL, API_KEY)
 build_web_page(response_dict)
 
+jprint(response_dict)
 jprint(count_photos(response_dict))
