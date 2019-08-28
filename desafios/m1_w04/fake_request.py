@@ -1,17 +1,6 @@
 import requests
 import json
 from pprint import pprint
-from termcolor import colored
-from pygments import highlight
-from pygments.lexers import JsonLexer
-from pygments.formatters import TerminalFormatter
-
-def cprint(string, fgc="yellow", bgc="on_grey"):
-    print(colored(string, fgc, bgc))
-
-def jprint(json_object):
-    json_str = json.dumps(json_object, indent=4, sort_keys=True)
-    print(highlight(json_str, JsonLexer(), TerminalFormatter()))
 
 def request(method, url, payload=""):
     headers = {
@@ -33,4 +22,4 @@ d3_res = request(method="POST", url=URL)
 d4_res = request(method="PUT", url=URL)
 d5_res = request(method="DELETE", url=URL)
 
-jprint(d2_res)
+pprint(d2_res)
