@@ -122,6 +122,19 @@ def binarize(dataframe):
             cols.append(col)
     return cols
 
+def binarize_binary(dataframe):
+    """Binarizes dataframe binary columns.
+    
+    Parameters
+    ----------
+    dataframe : pandas.DataFrame
+	DataFrame object with input data
+    """
+    for col in dataframe.columns.tolist():
+        index = dataframe[col].value_counts().index
+        if len(dataframe[col].value_counts()) == 2:
+            dataframe[col] = np.where(dataframe[col]==index[1], 1, 0)
+
 def generate_formula(variables, dep_variable):
     """Creates a formula_like string, useful for some statmodels methods.
     
