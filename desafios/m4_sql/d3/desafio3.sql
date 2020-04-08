@@ -1,12 +1,11 @@
 -- cleans and recreates db
-DROP DATABASE IF EXISTS Desafio2;
-DROP TABLE IF EXISTS artista CASCADE;
-DROP TABLE IF EXISTS album CASCADE;
-DROP TABLE IF EXISTS cancion CASCADE;
-CREATE DATABASE Desafio2;
+DROP DATABASE IF EXISTS desafio3;
+CREATE DATABASE desafio3;
 
--- creates table artista
-CREATE TABLE artista
+\c desafio3
+
+-- creates table artistas
+CREATE TABLE artistas
 (
     nombre_artista VARCHAR UNIQUE NOT NULL,
     fecha_de_nacimiento DATE,
@@ -14,32 +13,47 @@ CREATE TABLE artista
     PRIMARY KEY (nombre_artista)
 );
 
--- creates table album
-CREATE TABLE album
+-- creates table albums
+CREATE TABLE albums
 (
     titulo_album VARCHAR UNIQUE NOT NULL,
     nombre_artista VARCHAR,
     anio SMALLINT,
     FOREIGN KEY (nombre_artista)
-        REFERENCES Artista (nombre_artista),
+        REFERENCES artistas (nombre_artista),
     PRIMARY KEY (titulo_album)
 );
 
--- creates table cancion
-CREATE TABLE cancion
+-- creates table canciones
+CREATE TABLE canciones
 (
     titulo_cancion VARCHAR UNIQUE NOT NULL,
     nombre_artista VARCHAR,
     titulo_album VARCHAR,
     numero_del_track SMALLINT,
     FOREIGN KEY (nombre_artista)
-        REFERENCES Artista (nombre_artista),
+        REFERENCES artistas (nombre_artista),
     FOREIGN KEY (titulo_album)
-        REFERENCES Album (titulo_album),
+        REFERENCES albums (titulo_album),
     PRIMARY KEY (titulo_cancion)
 );
 
--- Copying data from files to previous tables
-\copy artista FROM Artista.csv DELIMITER ',' CSV HEADER;
-\copy album FROM Album.csv DELIMITER ',' CSV HEADER;
-\copy cancion FROM Cancion.csv DELIMITER ',' CSV HEADER;
+-- copying data from files to created tables
+\copy artistas FROM Artista.csv DELIMITER ',' CSV HEADER;
+\copy albums FROM Album.csv DELIMITER ',' CSV HEADER;
+\copy canciones FROM Cancion.csv DELIMITER ',' CSV HEADER;
+
+-- query: from subquery, retrieve the 4th track
+SELECT titulo_cancion
+FROM   canciones
+WHERE  numero_del_track = 4
+AND    nombre_artista =
+-- subquery: 1st USA artist born after 1992
+(
+    SELECT   nombre_artista
+    FROM     artistas
+    WHERE    nacionalidad = 'Estadounidense'
+    AND      fecha_de_nacimiento > '1992-12-31'
+    ORDER BY nombre_artista
+    FETCH FIRST ROW ONLY
+);
