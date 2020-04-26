@@ -2,17 +2,22 @@ import numpy as np
 import pandas as pd
 import csv
 import sys
+from pathlib import Path
+
 
 rows = int(sys.argv[1])
 fixed_seed = int(sys.argv[2])
 outfile = sys.argv[3]
 
+Path("dat/").mkdir(parents=True, exist_ok=True)
+Path("scr/").mkdir(parents=True, exist_ok=True)
+
 def create_random_row():
     deliverer_id = np.random.choice(range(100), 1)[0]
     delivery_zone = np.random.choice(['I', 'II', 'III', 'IV', 'V', 'VI','VII', 'VIII'])
     monthly_app_usage = np.random.poisson(15)
-    subscription_type = np.random.choice(['Free','Prepaid','Monthly','Trimestral', 'Semestral', 'Yearly'],
-                                         1,[.30, .20, 10,.15, .20, .05])[0]
+    subs_choices = ['Free','Prepaid','Monthly','Trimestral', 'Semestral', 'Yearly']
+    subscription_type = np.random.choice(subs_choices, 1,[.30, .20, 10,.15, .20, .05])[0]
     paid_price = np.random.normal(25.45, 10)
     customer_size = np.random.poisson(2) + 1
     menu = np.random.choice(['Asian', 'Indian', 'Italian','Japanese','French', 'Mexican'],1)[0]
@@ -48,4 +53,4 @@ with open(f'{outfile}.csv', 'w') as csvfile:
         file.writerow(create_random_row())
         i+=1
 
-print('Script finished.')
+print('DONE -> simulated data can be found at %s with %d rows --  seed = %d ' % (outfile, rows, fixed_seed))

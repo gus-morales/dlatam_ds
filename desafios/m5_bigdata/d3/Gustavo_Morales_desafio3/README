@@ -1,0 +1,17 @@
+├── install.sh
+├── dat
+│   ├── test_delivery_data.csv
+│   └── train_delivery_data.csv
+├── pkl
+│   └── best_model.pkl
+├── README
+├── src
+│   ├── predict_model.py
+│   ├── simulate_data.py
+│   └── train_models.py
+├── txt
+│   ├── candidate_models.txt
+│   └── eval_pr.txt
+└── uninstall.sh
+
+4 directories, 11 files
