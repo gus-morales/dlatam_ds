@@ -28,9 +28,6 @@ aws s3 cp src s3://adldesafio3/src --recursive
 aws s3 cp txt s3://adldesafio3/txt --recursive
 echo ""
 echo "${CYAN}(4.2) Zipping project for evaluation${NC}"
-zip Gustavo_Morales_desafio3.zip src/*
-zip -u Gustavo_Morales_desafio3.zip dat/*
-zip -u Gustavo_Morales_desafio3.zip txt/*
-zip -u Gustavo_Morales_desafio3.zip scr/*
+zip Gustavo_Morales_desafio3.zip src/* dat/* txt/* scr/*
 echo ""
 echo "${YELLOW}SCRIPT END${NC}"
