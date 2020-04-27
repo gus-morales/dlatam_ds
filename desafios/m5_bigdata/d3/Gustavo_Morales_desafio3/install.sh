@@ -7,8 +7,8 @@ echo "${YELLOW}SCRIPT START${NC}"
 echo ""
 
 echo "${CYAN}(1) Generating mock data${NC}"
-python3.7 src/simulate_data.py 1000 11238 dat/train_delivery_data
-python3.7 src/simulate_data.py 10000 42 dat/test_delivery_data
+python3.7 src/1_simulate_data.py 1000 11238 dat/train_delivery_data
+python3.7 src/1_simulate_data.py 10000 42 dat/test_delivery_data
 echo ""
 
 echo "${CYAN}(2) Training models${NC}"
@@ -16,7 +16,7 @@ while true; do
     read -p "Proceed? (y/n) " yn
     case $yn in
         [Yy]* ) echo "";\
-                python3.7 src/train_models.py | tee candidate_models.txt;\
+                python3.7 src/2_train_models.py | tee candidate_models.txt;\
                 mv candidate_models.txt txt/.; break;;
         [Nn]* ) echo "${LRED}SCRIPT ABORTED${NC}"; exit;;
         * ) echo "Please answer yes or no.";;
@@ -25,7 +25,7 @@ done
 echo ""
 
 echo "${CYAN}(3) Estimating probabilities${NC}"
-python3.7 src/predict_model.py | tee eval_pr.txt
+python3.7 src/3_predict_model.py | tee eval_pr.txt
 mv eval_pr.txt txt/.
 echo ""
 
