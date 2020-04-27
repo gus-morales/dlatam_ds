@@ -6,6 +6,21 @@ NC='\033[0m' # No Color
 echo "${YELLOW}SCRIPT START${NC}"
 echo ""
 
+echo "${CYAN}(0) Download source files from GitHub?${NC} (y/n)"
+while true; do
+    read -p " " yn
+    case $yn in
+        [Yy]* ) echo "";\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafio3/src/1_simulate_data.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafio3/src/2_train_models.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafio3/src/3_predict_model.py;\
+        mkdir src; mv *.py src/.; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+echo ""
+
 echo "${CYAN}(1) Generating mock data${NC}"
 python3.7 src/1_simulate_data.py 1000 11238 dat/train_delivery_data
 python3.7 src/1_simulate_data.py 10000 42 dat/test_delivery_data
