@@ -11,12 +11,9 @@ while true; do
     read -p " " yn
     case $yn in
         [Yy]* ) echo "";\
-        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/\
-                    desafios/m5_bigdata/d3/src/1_simulate_data.py;\
-        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/\
-                    desafios/m5_bigdata/d3/src/2_train_models.py;\
-        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/\
-                    desafios/m5_bigdata/d3/src/3_predict_models.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/1_simulate_data.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/2_train_models.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/3_predict_models.py;\
         mkdir src; mv *.py src/.; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
