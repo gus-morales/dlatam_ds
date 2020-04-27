@@ -33,7 +33,9 @@ echo "${CYAN}(4.1) Exporting files to S3 bucket${NC}"
 while true; do
     read -p "Proceed? (y/n) " yn
     case $yn in
-        [Yy]* ) echo ""; aws s3 cp src s3://adldesafio3/src --recursive; aws s3 cp txt s3://adldesafio3/txt --recursive; break;;
+        [Yy]* ) echo "";\
+                aws s3 cp src s3://adldesafio3/src --recursive;\
+                aws s3 cp txt s3://adldesafio3/txt --recursive; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
