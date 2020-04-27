@@ -5,10 +5,21 @@ NC='\033[0m' # No Color
 
 echo "${YELLOW}SCRIPT START${NC}"
 echo ""
+echo "${CYAN}(*) Install basic Python libraries?${NC} (y/n)"
+while true; do
+    read -p "" yn
+    case $yn in
+        [Yy]* ) echo "";\
+        sudo pip-3.6 install ipython pandas numpy scikit-learn;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+echo ""
 
 echo "${CYAN}(0) Download source files from GitHub?${NC} (y/n)"
 while true; do
-    read -p " " yn
+    read -p "" yn
     case $yn in
         [Yy]* ) echo "";\
         wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/1_simulate_data.py;\
