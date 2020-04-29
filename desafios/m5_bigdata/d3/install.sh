@@ -28,6 +28,7 @@ while true; do
         wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/1_simulate_data.py;\
         wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/2_train_models.py;\
         wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/3_predict_model.py;\
+        wget -L -nv https://raw.githubusercontent.com/gus-morales/dlatam_ds/master/desafios/m5_bigdata/d3/src/aux_funcs.py;\
         mkdir src; mv *.py src/.; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
@@ -38,7 +39,7 @@ echo ""
 #echo "${CYAN}(1) Generating mock data${NC}"
 echo "(1) Generating mock data"
 python3.7 src/1_simulate_data.py 1000 11238 dat/train_delivery_data
-python3.7 src/1_simulate_data.py 10000 42 dat/test_delivery_data
+python3.7 src/1_simulate_data.py 10000 42 dat/valid_delivery_data
 echo ""
 
 #echo "${CYAN}(2) Training models${NC}"
